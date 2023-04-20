@@ -48,9 +48,11 @@ public class InterfaceGraphique extends JComponent{
             return;
         }
 
-        plateau.efface(i, j);
+        boolean  res = plateau.efface(i, j);
         miseAjour();
-        clear(i,j);
+        if (res) {
+            clear(i,j);
+        }
 
     }
 

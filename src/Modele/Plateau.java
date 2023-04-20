@@ -55,12 +55,17 @@ public class Plateau {
         matrice[i][j] = POISON;
     }
     
-    public void efface(int x, int y){
+    public boolean efface(int x, int y){
+        if (x==0 && y==0){
+            System.out.println("Perdu");
+            return false;
+        }
         for (int i = x; i < matrice.length; i++) {
             for (int j = y; j < matrice[0].length; j++) {
                 setMange(i, j);
             }
         }
+        return true;
     }
 
 
