@@ -3,8 +3,8 @@
 ## Groupe
 
 Louis Lemay<br>
-Clément Raspail
-Alexis Etheve
-Thilen Savignon
-Theodora Ciobanu
-Esteban Barneaud
+Clément Raspail<br>
+Alexis Etheve<br>
+Thilen Savignon<br>
+Theodora Ciobanu<br>
+Esteban Barneaud<br>
