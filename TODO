@@ -1,0 +1,3 @@
+- Mettre la matrice dans une box elle meme dans la JFrame
+- Fonction de mise à jour de l'affichage (repaint sans ajout de carré blanc)
+- Resize de la fenetre
