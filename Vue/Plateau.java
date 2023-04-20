@@ -1,10 +1,13 @@
 package Vue;
 
+import javax.swing.*;
+import java.awt.*;
+
 public class Plateau {
 
     static final int MANGE = 0;
     static final int GAUFFRE = 1;
-    static final int EMPOISONNE = 2;
+    static final int POISON = 2;
 
     int [][] matrice;
 
@@ -32,9 +35,22 @@ public class Plateau {
         return matrice[i][j] == GAUFFRE;
     }
 
-    boolean estEmpoisonne(int i, int j){
-        return matrice[i][j] == EMPOISONNE;
+    boolean estPoison(int i, int j){
+        return matrice[i][j] == POISON;
     }
-    
+
+
+    public void setMange(int i, int j){
+        matrice[i][j] = MANGE;
+    }
+
+    public void setGauffre(int i, int j){
+        matrice[i][j] = GAUFFRE;
+    }
+
+    public void setPoison(int i, int j){
+        matrice[i][j] = POISON;
+    }
+
 
 }
