@@ -54,6 +54,14 @@ public class Plateau {
     public void setPoison(int i, int j){
         matrice[i][j] = POISON;
     }
+    
+    public void efface(int x, int y){
+        for (int i = x; i < matrice.length; i++) {
+            for (int j = y; j < matrice[0].length; j++) {
+                setMange(i, j);
+            }
+        }
+    }
 
 
 }

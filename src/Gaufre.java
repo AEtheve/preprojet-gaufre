@@ -11,8 +11,6 @@ public class Gaufre{
 
         i.demarrer();
 
-        p.setMange(1,2);
-
         i.miseAjour();
     
     }
