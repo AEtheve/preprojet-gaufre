@@ -4,7 +4,7 @@
 
 Louis Lemay<br>
 Clément Raspail<br>
-Alexis Etheve<br>
+Alexis Ethève<br>
 Thilen Savignon<br>
 Theodora Ciobanu<br>
 Esteban Barneaud<br>
