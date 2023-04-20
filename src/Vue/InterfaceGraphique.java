@@ -9,6 +9,8 @@ import java.io.InputStream;
 
 import javax.imageio.ImageIO;
 
+import Vue.EcouteurDeSouris;
+
 public class InterfaceGraphique extends JComponent{
 
     Plateau plateau;
@@ -28,18 +30,47 @@ public class InterfaceGraphique extends JComponent{
 
         fenetre.setSize(largeurCase * plateau.getLength(), hauteurCase * plateau.getWidth()+30);
         fenetre.setVisible(true);
+        fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         paintComponent(fenetre.getGraphics());
+
+        
+        EcouteurDeSouris ecouteur = new EcouteurDeSouris(this);
+        fenetre.addMouseListener(ecouteur);
+    }
+
+    public void clic(int x, int y){
+        
+        int i = (x - (fenetre.getWidth() - plateau.getLength() * largeurCase) / 2) / largeurCase;
+        int j = (y - (fenetre.getHeight() - plateau.getWidth() * hauteurCase) / 2) / hauteurCase;
+
+        if (i < 0 || i >= plateau.getLength() || j < 0 || j >= plateau.getWidth()) {
+            return;
+        }
+
+        plateau.efface(i, j);
+        miseAjour();
+        clear(i,j);
 
     }
 
     public void miseAjour(){
-        clear();
         paintComponent(fenetre.getGraphics());
     }
 
-    public void clear(){
-        fenetre.getGraphics().clearRect(0, 0, fenetre.getWidth(), fenetre.getHeight());
+    public void clear(int i, int j){
+        Graphics2D drawable = (Graphics2D) fenetre.getGraphics();
+
+        int largeur = fenetre.getWidth();
+        int hauteur = fenetre.getHeight();
+
+        Point center = new Point(largeur / 2, hauteur / 2);
+
+        for (int k = i; k < plateau.getLength(); k++) {
+            for (int l = j; l < plateau.getWidth(); l++) {
+                drawable.clearRect(center.x - (plateau.getLength() * largeurCase) / 2 + k * largeurCase, center.y + 14 - (plateau.getWidth() * hauteurCase) / 2 + l * hauteurCase, largeurCase, hauteurCase);
+            }
+        }
     }
 
     public void paintComponent(Graphics g) {
