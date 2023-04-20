@@ -2,7 +2,7 @@
 
 ## Groupe
 
-Louis Lemay\n
+Louis Lemay<br>
 Clément Raspail
 Alexis Etheve
 Thilen Savignon
