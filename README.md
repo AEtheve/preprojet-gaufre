@@ -1,8 +1,8 @@
-# preprojet-gaufre
+# PreProjet-gaufre
 
 ## Groupe
 
-Louis Lemay
+Louis Lemay\n
 Clément Raspail
 Alexis Etheve
 Thilen Savignon
