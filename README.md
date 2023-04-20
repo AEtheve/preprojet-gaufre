@@ -1,6 +1,6 @@
 # PreProjet-gaufre
 
-## Groupe
+## Groupe 2
 
 Louis Lemay<br>
 Clément Raspail<br>
