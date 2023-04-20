@@ -1,7 +1,4 @@
-package Vue;
-
-import javax.swing.*;
-import java.awt.*;
+package Modele;
 
 public class Plateau {
 
@@ -13,6 +10,12 @@ public class Plateau {
 
     public Plateau(int n, int m) {
         matrice = new int[n][m];
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                setGauffre(i, j);
+            }
+        }
     }
 
     public int getLength(){
@@ -27,15 +30,15 @@ public class Plateau {
         return matrice[i][j];
     }
 
-    boolean estMange(int i, int j){
+    public boolean estMange(int i, int j){
         return matrice[i][j] == MANGE;
     }
 
-    boolean estGauffre(int i, int j){
+    public boolean estGauffre(int i, int j){
         return matrice[i][j] == GAUFFRE;
     }
 
-    boolean estPoison(int i, int j){
+    public boolean estPoison(int i, int j){
         return matrice[i][j] == POISON;
     }
 
