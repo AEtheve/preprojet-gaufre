@@ -9,8 +9,6 @@ import java.io.InputStream;
 
 import javax.imageio.ImageIO;
 
-// import Vue.EcouteurDeSouris;
-
 public class InterfaceGraphique extends JComponent{
 
     Plateau plateau;
@@ -28,39 +26,25 @@ public class InterfaceGraphique extends JComponent{
 
         // TODO: s'adapter à la résolution de l'écran qui execute
         fenetre.setSize(largeurCase * plateau.getWidth(), hauteurCase * plateau.getHeight()+32);
-        Box box = Box.createVerticalBox();
-        box.add(new InterfaceGraphique(plateau));
-        fenetre.add(box);
+        fenetre.add(new InterfaceGraphique(plateau));
         
         fenetre.setVisible(true);
         fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);   
     }
 
-    public void miseAjour(){
-       repaint();
+    public void miseAJour(){
+        fenetre.repaint();
     }
 
-    public void clear(int i, int j){
-        Graphics2D drawable = (Graphics2D) fenetre.getGraphics();
-
-        int largeur = fenetre.getWidth();
-        int hauteur = fenetre.getHeight();
-
-        Point center = new Point(largeur / 2, hauteur / 2);
-
-        for (int k = i; k < plateau.getWidth(); k++) {
-            for (int l = j; l < plateau.getHeight(); l++) {
-                drawable.clearRect(center.x - (plateau.getWidth() * largeurCase) / 2 + k * largeurCase, center.y + 14 - (plateau.getHeight() * hauteurCase) / 2 + l * hauteurCase, largeurCase, hauteurCase);
-            }
-        }
-    }
-
-    
     public void paintComponent(Graphics g) {
         Graphics2D drawable = (Graphics2D) g;
         
         Image imgGaufre = importImage("res/Images/gaufre.png");
         Image imgPoison = importImage("res/Images/poison.png");
+
+
+        imgGaufre = imgGaufre.getScaledInstance(largeurCase, hauteurCase, Image.SCALE_DEFAULT);
+        imgPoison = imgPoison.getScaledInstance(largeurCase, hauteurCase, Image.SCALE_DEFAULT);
 
         for (int i = 0; i < plateau.getWidth(); i++) {
             for (int j = 0; j < plateau.getHeight(); j++) {

@@ -18,7 +18,7 @@ public class PlayerControler implements Controler{
         }
         
         if (plateau.efface(i, j)) {
-            interfaceGraphique.clear(i, j);
+            interfaceGraphique.miseAJour();
         }
     }
 
