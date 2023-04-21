@@ -31,30 +31,8 @@ public class InterfaceGraphique extends JComponent{
         fenetre.add(new InterfaceGraphique(plateau));
         
         fenetre.setVisible(true);
-        fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        
-        
+        fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);   
     }
-
-    /* public void clic(int x, int y){
-        
-        // int i = (x - (fenetre.getWidth() - plateau.getLength() * largeurCase) / 2) / largeurCase;
-        // int j = (y - (fenetre.getHeight() - plateau.getWidth() * hauteurCase) / 2) / hauteurCase;
-        int i = (x - (fenetre.getWidth() - plateau.getLargeur() * largeurCase) / 2) / largeurCase;
-        int j = (y - (fenetre.getHeight() - plateau.getHauteur() * hauteurCase) / 2) / hauteurCase;
-
-        if (i < 0 || i >= plateau.getWidth() || j < 0 || j >= plateau.getHeight()) {
-            return;
-        }
-
-        System.out.println("Clic en " + i + ", " + j);
-
-        if (plateau.efface(i, j)){
-            clear(i,j);
-        }
-
-    } */
 
     public void miseAjour(){
        repaint();
@@ -78,9 +56,6 @@ public class InterfaceGraphique extends JComponent{
     
     public void paintComponent(Graphics g) {
         Graphics2D drawable = (Graphics2D) g;
-
-        int largeur = fenetre.getWidth();
-        int hauteur = fenetre.getHeight();
         
         Image imgGaufre = importImage("res/Images/gaufre.png");
         Image imgPoison = importImage("res/Images/poison.png");
