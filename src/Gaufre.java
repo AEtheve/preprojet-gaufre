@@ -6,9 +6,7 @@ public class Gaufre{
         Plateau p = new Plateau(8, 8);
         InterfaceGraphique i = new InterfaceGraphique(p);
 
-        int rx = (int) (Math.random() * p.getWidth());
-        int ry = (int) (Math.random() * p.getHeight());
-        p.setPoison(rx,ry);
+        p.setPoison(0,0);
 
         i.demarrer();
     
