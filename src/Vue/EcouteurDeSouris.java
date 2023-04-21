@@ -4,8 +4,7 @@ package Vue;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-// import Vue.InterfaceGraphique;
-import Controlleur.Controler;
+import Controleur.Controler;
 
 public class EcouteurDeSouris implements MouseListener {
 	InterfaceGraphique interfaceGraphique;

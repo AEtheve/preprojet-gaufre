@@ -16,6 +16,7 @@ public class Plateau {
                 setGaufre(i, j);
             }
         }
+        setPoison(0, 0);
     }
 
     public int getWidth(){

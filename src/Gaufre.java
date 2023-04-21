@@ -1,17 +1,22 @@
+
+import Global.Configuration;
+
+import Modele.Jeu;
+import Vue.CollecteurEvenements;
 import Vue.InterfaceGraphique;
-import Modele.Plateau;
-import Controlleur.PlayerControler;
+import Controleur.PlayerControler;
 
-public class Gaufre{
+public class Gaufre {
+
     public static void main(String[] args) {
-        Plateau p = new Plateau(8, 8);
-        InterfaceGraphique i = new InterfaceGraphique(p);
-        i.demarrer();
-        PlayerControler pc = new PlayerControler(i, p);
+        Configuration.info("Initialisation de la fenetre");
+        Jeu j = new Jeu(10, 10);
 
-        p.setPoison(0, 0);
 
-        
-    
+        CollecteurEvenements pc = new PlayerControler(j);
+
+        InterfaceGraphique.demarrer(j, pc);
     }
+
+
 }
