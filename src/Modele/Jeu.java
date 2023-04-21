@@ -14,9 +14,16 @@ public class Jeu extends Observable {
     }
 
     public void efface(int x, int y) {
-        if (plateau.efface(x, y)) {
-            metAJour();
+        if(termine(x,y)){
+            System.out.println("Le jeu est terminé");
+            return;
         }
+        plateau.efface(x, y);
+        metAJour();
+    }
+
+    boolean termine(int x, int y) {
+        return plateau.estPoison(x, y);
     }
     
 }
