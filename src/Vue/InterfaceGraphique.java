@@ -63,17 +63,24 @@ public class InterfaceGraphique implements Runnable, InterfaceUtilisateur {
 		return boite;
 	}
 
+	public void ajouteBarreDesMenus(JFrame frame) {
+		BarreDesMenus barreDesMenus = new BarreDesMenus();
+		frame.setJMenuBar(barreDesMenus);
+	}
+
 
 
     public void run() {
 		frame = new JFrame("Gaufre Empoisonnée");
 		PlateauGraphique plateauGraphique = new PlateauGraphique(j);
 		plateauGraphique.addMouseListener(new AdaptateurSouris(plateauGraphique, control));
+		ajouteBarreDesMenus(frame);
 		frame.add(plateauGraphique);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(800, 600);
 		frame.setExtendedState(Frame.MAXIMIZED_BOTH);
 		frame.setVisible(true);
+		System.out.println("Ajout Menu");
 	}
 
 
