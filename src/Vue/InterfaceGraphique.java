@@ -64,7 +64,7 @@ public class InterfaceGraphique implements Runnable, InterfaceUtilisateur {
 	}
 
 	public void ajouteBarreDesMenus(JFrame frame) {
-		BarreDesMenus barreDesMenus = new BarreDesMenus();
+		BarreDesMenus barreDesMenus = new BarreDesMenus(j);
 		frame.setJMenuBar(barreDesMenus);
 	}
 
@@ -80,7 +80,6 @@ public class InterfaceGraphique implements Runnable, InterfaceUtilisateur {
 		frame.setSize(800, 600);
 		frame.setExtendedState(Frame.MAXIMIZED_BOTH);
 		frame.setVisible(true);
-		System.out.println("Ajout Menu");
 	}
 
 

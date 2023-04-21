@@ -13,11 +13,15 @@ public class Jeu extends Observable {
         return plateau;
     }
 
+    public void resetPlateau(){
+        plateau = new Plateau(plateau.getWidth(), plateau.getHeight());
+    }
+
     public void efface(int x, int y) {
         if(termine(x,y)){
             System.out.println("Le jeu est terminé");
             System.out.println("Le joueur " + (plateau.getPlayer() == 0 ? 2 : 1) + " a gagné");            
-            plateau = new Plateau(plateau.getWidth(), plateau.getHeight());
+            resetPlateau();
             metAJour();
             return;
         }
