@@ -28,6 +28,7 @@ public class InterfaceGraphique extends JComponent{
 
         // TODO: s'adapter à la résolution de l'écran qui execute
         fenetre.setSize(largeurCase * plateau.getWidth(), hauteurCase * plateau.getHeight()+30);
+        fenetre.add(new InterfaceGraphique(plateau));
         
         fenetre.setVisible(true);
         fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -59,7 +60,7 @@ public class InterfaceGraphique extends JComponent{
     }
 
     public void miseAjour(){
-        paintComponent(fenetre.getGraphics());
+       repaint();
     }
 
     public void clear(int i, int j){
@@ -77,6 +78,7 @@ public class InterfaceGraphique extends JComponent{
         }
     }
 
+    
     public void paintComponent(Graphics g) {
         Graphics2D drawable = (Graphics2D) g;
 
