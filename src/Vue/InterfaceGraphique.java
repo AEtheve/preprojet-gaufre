@@ -27,8 +27,10 @@ public class InterfaceGraphique extends JComponent{
 
 
         // TODO: s'adapter à la résolution de l'écran qui execute
-        fenetre.setSize(largeurCase * plateau.getWidth(), hauteurCase * plateau.getHeight()+30);
-        fenetre.add(new InterfaceGraphique(plateau));
+        fenetre.setSize(largeurCase * plateau.getWidth(), hauteurCase * plateau.getHeight()+32);
+        Box box = Box.createVerticalBox();
+        box.add(new InterfaceGraphique(plateau));
+        fenetre.add(box);
         
         fenetre.setVisible(true);
         fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);   
