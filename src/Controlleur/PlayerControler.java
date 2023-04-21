@@ -16,11 +16,9 @@ public class PlayerControler implements Controler{
         if (i < 0 || i >= plateau.getWidth() || j < 0 || j >= plateau.getHeight()) {
             return;
         }
-
-        boolean  res = plateau.efface(i, j);
-        interfaceGraphique.miseAjour();
-        if (res) {
-            interfaceGraphique.clear(i,j);
+        
+        if (plateau.efface(i, j)) {
+            interfaceGraphique.clear(i, j);
         }
     }
 
