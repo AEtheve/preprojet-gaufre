@@ -1,21 +1,23 @@
 package Vue;
 
-import javax.swing.*;
+// import javax.swing.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import Vue.InterfaceGraphique;
+// import Vue.InterfaceGraphique;
+import Controlleur.Controler;
 
 public class EcouteurDeSouris implements MouseListener {
 	InterfaceGraphique interfaceGraphique;
+	Controler control;
 
-	public EcouteurDeSouris(InterfaceGraphique i) {
-		interfaceGraphique = i;
+	public EcouteurDeSouris(Controler c) {
+		control = c;
 	}
 	
 	@Override
 	public void mousePressed(MouseEvent e) {
-		interfaceGraphique.clic(e.getX(), e.getY());
+		control.onClick(e.getX(), e.getY());
 	}
 
 	// Toutes les méthodes qui suivent font partie de l'interface. Si nous ne

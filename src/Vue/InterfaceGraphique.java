@@ -9,15 +9,15 @@ import java.io.InputStream;
 
 import javax.imageio.ImageIO;
 
-import Vue.EcouteurDeSouris;
+// import Vue.EcouteurDeSouris;
 
 public class InterfaceGraphique extends JComponent{
 
     Plateau plateau;
-    JFrame fenetre = new JFrame("Gaufre");
+    public JFrame fenetre = new JFrame("Gaufre");
 
-    int largeurCase = 64;
-    int hauteurCase = 64;
+    public int largeurCase = 64;
+    public int hauteurCase = 64;
 
     public InterfaceGraphique(Plateau p){
         plateau = p;
@@ -35,11 +35,10 @@ public class InterfaceGraphique extends JComponent{
         paintComponent(fenetre.getGraphics());
 
         
-        EcouteurDeSouris ecouteur = new EcouteurDeSouris(this);
-        fenetre.addMouseListener(ecouteur);
+        
     }
 
-    public void clic(int x, int y){
+    /* public void clic(int x, int y){
         
         // int i = (x - (fenetre.getWidth() - plateau.getLength() * largeurCase) / 2) / largeurCase;
         // int j = (y - (fenetre.getHeight() - plateau.getWidth() * hauteurCase) / 2) / hauteurCase;
@@ -56,7 +55,7 @@ public class InterfaceGraphique extends JComponent{
             clear(i,j);
         }
 
-    }
+    } */
 
     public void miseAjour(){
         paintComponent(fenetre.getGraphics());
