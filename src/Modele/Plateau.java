@@ -18,11 +18,11 @@ public class Plateau {
         }
     }
 
-    public int getLargeur(){
+    public int getWidth(){
         return matrice.length;
     }
 
-    public int getHauteur(){
+    public int getHeight(){
         return matrice[0].length;
     }
 
@@ -56,7 +56,7 @@ public class Plateau {
     }
     
     public boolean efface(int x, int y){
-        if (x==0 && y==0){
+        if (x== && y==0){
             System.out.println("Perdu");
             return false;
         }
