@@ -27,12 +27,11 @@ public class InterfaceGraphique extends JComponent{
 
 
         // TODO: s'adapter à la résolution de l'écran qui execute
-        fenetre.setSize(largeurCase * plateau.getLargeur(), hauteurCase * plateau.getHauteur()+30);
+        fenetre.setSize(largeurCase * plateau.getWidth(), hauteurCase * plateau.getHeight()+30);
+        fenetre.add(new InterfaceGraphique(plateau));
         
         fenetre.setVisible(true);
         fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        paintComponent(fenetre.getGraphics());
 
         
         
@@ -45,20 +44,20 @@ public class InterfaceGraphique extends JComponent{
         int i = (x - (fenetre.getWidth() - plateau.getLargeur() * largeurCase) / 2) / largeurCase;
         int j = (y - (fenetre.getHeight() - plateau.getHauteur() * hauteurCase) / 2) / hauteurCase;
 
-        if (i < 0 || i >= plateau.getLargeur() || j < 0 || j >= plateau.getHauteur()) {
+        if (i < 0 || i >= plateau.getWidth() || j < 0 || j >= plateau.getHeight()) {
             return;
         }
 
-        boolean  res = plateau.efface(i, j);
-        miseAjour();
-        if (res) {
+        System.out.println("Clic en " + i + ", " + j);
+
+        if (plateau.efface(i, j)){
             clear(i,j);
         }
 
     } */
 
     public void miseAjour(){
-        paintComponent(fenetre.getGraphics());
+       repaint();
     }
 
     public void clear(int i, int j){
@@ -69,13 +68,14 @@ public class InterfaceGraphique extends JComponent{
 
         Point center = new Point(largeur / 2, hauteur / 2);
 
-        for (int k = i; k < plateau.getLargeur(); k++) {
-            for (int l = j; l < plateau.getHauteur(); l++) {
-                drawable.clearRect(center.x - (plateau.getLargeur() * largeurCase) / 2 + k * largeurCase, center.y + 14 - (plateau.getHauteur() * hauteurCase) / 2 + l * hauteurCase, largeurCase, hauteurCase);
+        for (int k = i; k < plateau.getWidth(); k++) {
+            for (int l = j; l < plateau.getHeight(); l++) {
+                drawable.clearRect(center.x - (plateau.getWidth() * largeurCase) / 2 + k * largeurCase, center.y + 14 - (plateau.getHeight() * hauteurCase) / 2 + l * hauteurCase, largeurCase, hauteurCase);
             }
         }
     }
 
+    
     public void paintComponent(Graphics g) {
         Graphics2D drawable = (Graphics2D) g;
 
@@ -85,17 +85,15 @@ public class InterfaceGraphique extends JComponent{
         Image imgGaufre = importImage("res/Images/gaufre.png");
         Image imgPoison = importImage("res/Images/poison.png");
 
-        Point center = new Point(largeur / 2, hauteur / 2);
-
-        for (int i = 0; i < plateau.getLargeur(); i++) {
-            for (int j = 0; j < plateau.getHauteur(); j++) {
-                if (plateau.estGauffre(i, j)) {
-                    drawable.drawImage(imgGaufre, center.x - (plateau.getLargeur() * largeurCase) / 2 + i * largeurCase, center.y + 14 - (plateau.getHauteur() * hauteurCase) / 2 + j * hauteurCase, largeurCase, hauteurCase, null);
+        for (int i = 0; i < plateau.getWidth(); i++) {
+            for (int j = 0; j < plateau.getHeight(); j++) {
+                if (plateau.estGaufre(i, j)) {
+                    drawable.drawImage(imgGaufre, i * largeurCase, j * hauteurCase, largeurCase, hauteurCase, null);
                 }
 
                 if (plateau.estPoison(i, j)) {
-                    drawable.drawImage(imgGaufre, center.x - (plateau.getLargeur() * largeurCase) / 2 + i * largeurCase, center.y + 14 - (plateau.getHauteur() * hauteurCase) / 2 + j * hauteurCase, largeurCase, hauteurCase, null);
-                    drawable.drawImage(imgPoison, center.x - (plateau.getLargeur() * largeurCase) / 2 + i * largeurCase, center.y + 14 - (plateau.getHauteur() * hauteurCase) / 2 + j * hauteurCase, largeurCase, hauteurCase, null);
+                    drawable.drawImage(imgGaufre, i * largeurCase, j * hauteurCase, largeurCase, hauteurCase, null);
+                    drawable.drawImage(imgPoison, i * largeurCase, j * hauteurCase, largeurCase, hauteurCase, null);
                 }
             }
         }

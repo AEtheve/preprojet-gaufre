@@ -3,7 +3,7 @@ package Modele;
 public class Plateau {
 
     static final int MANGE = 0;
-    static final int GAUFFRE = 1;
+    static final int Gaufre = 1;
     static final int POISON = 2;
 
     int [][] matrice;
@@ -13,16 +13,16 @@ public class Plateau {
 
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
-                setGauffre(i, j);
+                setGaufre(i, j);
             }
         }
     }
 
-    public int getLargeur(){
+    public int getWidth(){
         return matrice.length;
     }
 
-    public int getHauteur(){
+    public int getHeight(){
         return matrice[0].length;
     }
 
@@ -34,8 +34,8 @@ public class Plateau {
         return matrice[i][j] == MANGE;
     }
 
-    public boolean estGauffre(int i, int j){
-        return matrice[i][j] == GAUFFRE;
+    public boolean estGaufre(int i, int j){
+        return matrice[i][j] == Gaufre;
     }
 
     public boolean estPoison(int i, int j){
@@ -47,8 +47,8 @@ public class Plateau {
         matrice[i][j] = MANGE;
     }
 
-    public void setGauffre(int i, int j){
-        matrice[i][j] = GAUFFRE;
+    public void setGaufre(int i, int j){
+        matrice[i][j] = Gaufre;
     }
 
     public void setPoison(int i, int j){

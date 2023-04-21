@@ -10,10 +10,10 @@ public class PlayerControler implements Controler{
 
     @Override
     public void onClick(int x, int y) {
-        int i = (x - (interfaceGraphique.fenetre.getWidth() - plateau.getLargeur() * interfaceGraphique.largeurCase) / 2) / interfaceGraphique.largeurCase;
-        int j = (y - (interfaceGraphique.fenetre.getHeight() - plateau.getHauteur() * interfaceGraphique.hauteurCase) / 2) / interfaceGraphique.hauteurCase;
+        int i = (x - (interfaceGraphique.fenetre.getWidth() - plateau.getWidth() * interfaceGraphique.largeurCase) / 2) / interfaceGraphique.largeurCase;
+        int j = (y - (interfaceGraphique.fenetre.getHeight() - plateau.getHeight() * interfaceGraphique.hauteurCase) / 2) / interfaceGraphique.hauteurCase;
 
-        if (i < 0 || i >= plateau.getLargeur() || j < 0 || j >= plateau.getHauteur()) {
+        if (i < 0 || i >= plateau.getWidth() || j < 0 || j >= plateau.getHeight()) {
             return;
         }
 
