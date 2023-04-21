@@ -11,6 +11,7 @@ public class InterfaceGraphique implements Runnable, InterfaceUtilisateur {
 	CollecteurEvenements control;
     JFrame frame;
 	boolean maximized;
+	JLabel joueur;
 
     public InterfaceGraphique(Jeu j, CollecteurEvenements c) {
         this.j = j;
@@ -36,6 +37,34 @@ public class InterfaceGraphique implements Runnable, InterfaceUtilisateur {
 		}
 	}
 
+	private JLabel creerLabel(String text) {
+		JLabel label = new JLabel(text);
+		label.setAlignmentX(Component.CENTER_ALIGNMENT);
+		return label;
+	}
+
+	private JToggleButton creerToggleButton(String text) {
+		JToggleButton bouton = new JToggleButton(text);
+		bouton.setAlignmentX(Component.CENTER_ALIGNMENT);
+		bouton.setFocusable(false);
+		return bouton;
+	}
+
+	private JButton creerButton(String text) {
+		JButton bouton = new JButton(text);
+		bouton.setAlignmentX(Component.CENTER_ALIGNMENT);
+		bouton.setFocusable(false);
+		return bouton;
+	}
+
+	private Box creerBoiteHorizontale() {
+		Box boite = Box.createHorizontalBox();
+		boite.setAlignmentX(Component.CENTER_ALIGNMENT);
+		return boite;
+	}
+
+
+
     public void run() {
 		frame = new JFrame("Gaufre Empoisonnée");
 		PlateauGraphique plateauGraphique = new PlateauGraphique(j);
@@ -43,6 +72,7 @@ public class InterfaceGraphique implements Runnable, InterfaceUtilisateur {
 		frame.add(plateauGraphique);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(800, 600);
+		frame.setExtendedState(Frame.MAXIMIZED_BOTH);
 		frame.setVisible(true);
 	}
 
