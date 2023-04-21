@@ -63,6 +63,10 @@ public class PlateauGraphique extends JComponent implements Observateur {
         xFen = (largeur - largeurCase * p.getWidth()) / 2;
         yFen = (hauteur - hauteurCase * p.getHeight()) / 2;
 
+        String title = "Gaufre Empoisonnée - Tour de Joueur " + (j.getPlateau().getPlayer() + 1);
+        JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
+        frame.setTitle(title);
+
 
         for (int i = 0; i < p.getWidth(); i++) {
             for (int j = 0; j < p.getHeight(); j++) {

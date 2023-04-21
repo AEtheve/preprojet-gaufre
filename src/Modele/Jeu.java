@@ -19,6 +19,7 @@ public class Jeu extends Observable {
             return;
         }
         plateau.efface(x, y);
+        plateau.setPlayer(plateau.getPlayer() == 0 ? 1 : 0);
         metAJour();
     }
 
