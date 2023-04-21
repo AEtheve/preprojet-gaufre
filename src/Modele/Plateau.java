@@ -56,7 +56,7 @@ public class Plateau {
     }
     
     public boolean efface(int x, int y){
-        if (x== && y==0){
+        if (x== 0 && y==0){
             System.out.println("Perdu");
             return false;
         }

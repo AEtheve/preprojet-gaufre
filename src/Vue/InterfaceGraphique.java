@@ -21,6 +21,17 @@ public class InterfaceGraphique extends JComponent{
 
     public InterfaceGraphique(Plateau p){
         plateau = p;
+
+        fenetre.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentResized(java.awt.event.ComponentEvent evt) {
+               largeurCase = fenetre.getWidth() / plateau.getWidth();
+                hauteurCase = fenetre.getHeight() / plateau.getHeight();
+
+                System.out.println("largeurCase: " + largeurCase);
+
+                
+            }
+        });
     }
     
     public void demarrer(){
@@ -91,10 +102,13 @@ public class InterfaceGraphique extends JComponent{
         for (int i = 0; i < plateau.getWidth(); i++) {
             for (int j = 0; j < plateau.getHeight(); j++) {
                 if (plateau.estGauffre(i, j)) {
-                    drawable.drawImage(imgGaufre, center.x - (plateau.getWidth() * largeurCase) / 2 + i * largeurCase, center.y + 14 - (plateau.getHeight() * hauteurCase) / 2 + j * hauteurCase, largeurCase, hauteurCase, null);
+                    drawable.drawImage(imgGaufre, i * largeurCase, j * hauteurCase, largeurCase, hauteurCase, null);
                 }
 
                 if (plateau.estPoison(i, j)) {
+                    // drawable.drawImage(imgGaufre, center.x - (plateau.getWidth() * largeurCase) / 2 + i * largeurCase, center.y + 14 - (plateau.getHeight() * hauteurCase) / 2 + j * hauteurCase, largeurCase, hauteurCase, null);
+                    // drawable.drawImage(imgPoison, center.x - (plateau.getWidth() * largeurCase) / 2 + i * largeurCase, center.y + 14 - (plateau.getHeight() * hauteurCase) / 2 + j * hauteurCase, largeurCase, hauteurCase, null);
+
                     drawable.drawImage(imgGaufre, center.x - (plateau.getWidth() * largeurCase) / 2 + i * largeurCase, center.y + 14 - (plateau.getHeight() * hauteurCase) / 2 + j * hauteurCase, largeurCase, hauteurCase, null);
                     drawable.drawImage(imgPoison, center.x - (plateau.getWidth() * largeurCase) / 2 + i * largeurCase, center.y + 14 - (plateau.getHeight() * hauteurCase) / 2 + j * hauteurCase, largeurCase, hauteurCase, null);
                 }
