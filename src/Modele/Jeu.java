@@ -17,8 +17,7 @@ public class Jeu extends Observable {
         if(termine(x,y)){
             System.out.println("Le jeu est terminé");
             System.out.println("Le joueur " + (plateau.getPlayer() == 0 ? 2 : 1) + " a gagné");
-            plateau.efface(0,1);
-            plateau.efface(1,0);
+            plateau.efface(0,0);
             metAJour();
             return;
         }

@@ -16,6 +16,8 @@ public class PlateauGraphique extends JComponent implements Observateur {
     int hauteurCase;
     int xFen;
     int yFen;
+    int barreHauteur;
+    int barreLargeur;
 
     public PlateauGraphique(Jeu j) {
         this.j = j;
@@ -52,12 +54,18 @@ public class PlateauGraphique extends JComponent implements Observateur {
         Graphics2D drawable = (Graphics2D) g;
         Plateau p = j.getPlateau();
 
+        barreHauteur = 30;
+        barreLargeur = getSize().width;
+
         int largeur = getSize().width;
-        int hauteur = getSize().height;
+        int hauteur = getSize().height - barreHauteur;
         largeurCase = largeur / p.getWidth();
         hauteurCase = hauteur / p.getHeight();
         largeurCase = Math.min(largeurCase, hauteurCase);
         hauteurCase = largeurCase;
+
+        xFen = (largeur - largeurCase * p.getWidth()) / 2;
+        yFen = (hauteur - hauteurCase * p.getHeight()) / 2 + barreHauteur;
 
         dessinerBarre(drawable, p);
         dessinerCases(drawable, p);
@@ -65,15 +73,8 @@ public class PlateauGraphique extends JComponent implements Observateur {
     }
 
     private void dessinerBarre(Graphics2D drawable, Plateau p) {
-        int largeur = getSize().width;
-        int hauteur = getSize().height;
-        int barreHauteur = 30;
         int barreY = 0;
         int barreX = 0;
-        int barreLargeur = largeur;
-
-        xFen = (largeur - largeurCase * p.getWidth()) / 2;
-        yFen = (hauteur - hauteurCase * p.getHeight()) / 2 + barreHauteur;
 
         drawable.setColor(Color.GRAY);
         drawable.fillRect(barreX, barreY, barreLargeur, barreHauteur);
@@ -84,7 +85,7 @@ public class PlateauGraphique extends JComponent implements Observateur {
         drawable.setColor(Color.WHITE);
         FontMetrics metrics = drawable.getFontMetrics(font);
         int titleWidth = metrics.stringWidth(title);
-        int titleX = (largeur - titleWidth) / 2;
+        int titleX = (barreLargeur - titleWidth) / 2;
         int titleY = barreHauteur / 2 + metrics.getAscent() / 2;
         drawable.drawString(title, titleX, titleY);
     }
