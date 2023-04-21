@@ -33,17 +33,12 @@ public class InterfaceGraphique extends JComponent{
         fenetre.setVisible(true);
         fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        paintComponent(fenetre.getGraphics());
-
         
         EcouteurDeSouris ecouteur = new EcouteurDeSouris(this);
         fenetre.addMouseListener(ecouteur);
     }
 
     public void clic(int x, int y){
-        
-        // int i = (x - (fenetre.getWidth() - plateau.getLength() * largeurCase) / 2) / largeurCase;
-        // int j = (y - (fenetre.getHeight() - plateau.getWidth() * hauteurCase) / 2) / hauteurCase;
         int i = (x - (fenetre.getWidth() - plateau.getWidth() * largeurCase) / 2) / largeurCase;
         int j = (y - (fenetre.getHeight() - plateau.getHeight() * hauteurCase) / 2) / hauteurCase;
 
@@ -51,11 +46,11 @@ public class InterfaceGraphique extends JComponent{
             return;
         }
 
-        boolean  res = plateau.efface(i, j);
-        miseAjour();
-        if (res) {
-            clear(i,j);
-        }
+        System.out.println("Clic en " + i + ", " + j);
+
+        // if (plateau.efface(i, j)){
+        //     clear(i,j);
+        // }
 
     }
 
@@ -88,17 +83,15 @@ public class InterfaceGraphique extends JComponent{
         Image imgGaufre = importImage("res/Images/gaufre.png");
         Image imgPoison = importImage("res/Images/poison.png");
 
-        Point center = new Point(largeur / 2, hauteur / 2);
-
         for (int i = 0; i < plateau.getWidth(); i++) {
             for (int j = 0; j < plateau.getHeight(); j++) {
                 if (plateau.estGaufre(i, j)) {
-                    drawable.drawImage(imgGaufre, center.x - (plateau.getWidth() * largeurCase) / 2 + i * largeurCase, center.y + 14 - (plateau.getHeight() * hauteurCase) / 2 + j * hauteurCase, largeurCase, hauteurCase, null);
+                    drawable.drawImage(imgGaufre, i * largeurCase, j * hauteurCase, largeurCase, hauteurCase, null);
                 }
 
                 if (plateau.estPoison(i, j)) {
-                    drawable.drawImage(imgGaufre, center.x - (plateau.getWidth() * largeurCase) / 2 + i * largeurCase, center.y + 14 - (plateau.getHeight() * hauteurCase) / 2 + j * hauteurCase, largeurCase, hauteurCase, null);
-                    drawable.drawImage(imgPoison, center.x - (plateau.getWidth() * largeurCase) / 2 + i * largeurCase, center.y + 14 - (plateau.getHeight() * hauteurCase) / 2 + j * hauteurCase, largeurCase, hauteurCase, null);
+                    drawable.drawImage(imgGaufre, i * largeurCase, j * hauteurCase, largeurCase, hauteurCase, null);
+                    drawable.drawImage(imgPoison, i * largeurCase, j * hauteurCase, largeurCase, hauteurCase, null);
                 }
             }
         }

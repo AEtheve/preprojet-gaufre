@@ -9,7 +9,6 @@ public class Gaufre{
         p.setPoison(0, 0);
 
         i.demarrer();
-        i.miseAjour();
     
     }
 }
