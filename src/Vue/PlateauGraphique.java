@@ -54,7 +54,7 @@ public class PlateauGraphique extends JComponent implements Observateur {
         Graphics2D drawable = (Graphics2D) g;
         Plateau p = j.getPlateau();
 
-        barreHauteur = 30;
+        barreHauteur = getSize().height * 5 / 100;
         barreLargeur = getSize().width;
 
         int largeur = getSize().width;
@@ -80,13 +80,13 @@ public class PlateauGraphique extends JComponent implements Observateur {
         drawable.fillRect(barreX, barreY, barreLargeur, barreHauteur);
 
         String title = "Tour du joueur " + (j.getPlateau().getPlayer() + 1);
-        Font font = new Font("Arial", Font.BOLD, 16);
+        Font font = new Font("Arial", Font.BOLD, (barreHauteur * 6 / 10));
         drawable.setFont(font);
         drawable.setColor(Color.WHITE);
         FontMetrics metrics = drawable.getFontMetrics(font);
         int titleWidth = metrics.stringWidth(title);
         int titleX = (barreLargeur - titleWidth) / 2;
-        int titleY = barreHauteur / 2 + metrics.getAscent() / 2;
+        int titleY = barreHauteur / 2 + metrics.getAscent() * 40 / 100;
         drawable.drawString(title, titleX, titleY);
     }
 
