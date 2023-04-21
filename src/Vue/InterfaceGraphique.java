@@ -48,9 +48,9 @@ public class InterfaceGraphique extends JComponent{
 
         System.out.println("Clic en " + i + ", " + j);
 
-        // if (plateau.efface(i, j)){
-        //     clear(i,j);
-        // }
+        if (plateau.efface(i, j)){
+            clear(i,j);
+        }
 
     }
 
