@@ -18,11 +18,11 @@ public class Plateau {
         }
     }
 
-    public int getLength(){
+    public int getLargeur(){
         return matrice.length;
     }
 
-    public int getWidth(){
+    public int getHauteur(){
         return matrice[0].length;
     }
 
