@@ -16,6 +16,10 @@ public class Jeu extends Observable {
     public void efface(int x, int y) {
         if(termine(x,y)){
             System.out.println("Le jeu est terminé");
+            System.out.println("Le joueur " + (plateau.getPlayer() == 0 ? 2 : 1) + " a gagné");
+            plateau.efface(0,1);
+            plateau.efface(1,0);
+            metAJour();
             return;
         }
         plateau.efface(x, y);
