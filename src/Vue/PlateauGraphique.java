@@ -42,24 +42,24 @@ public class PlateauGraphique extends JComponent implements Observateur {
         switch(style.toLowerCase()){
             case "classique":
                 System.out.println("Style classique");
-                gaufre = lisImage("gaufre2");
-                poison = lisImage("poison2");
-                gaufre_droit = lisImage("gaufre2");
-                gaufre_bas = lisImage("gaufre2");
-                gaufre_coin = lisImage("gaufre2");
-                poison_bas = lisImage("poison2");
-                poison_droit = lisImage("poison2");
+                gaufre = lisImage("classique/gaufre");
+                poison = lisImage("classique/poison");
+                gaufre_droit = lisImage("classique/gaufre");
+                gaufre_bas = lisImage("classique/gaufre");
+                gaufre_coin = lisImage("classique/gaufre");
+                poison_bas = lisImage("classique/poison");
+                poison_droit = lisImage("classique/poison");
                 break;
             case "pixel":
             default :
                 style = "pixel";
-                gaufre = lisImage("gaufre");
-                poison = lisImage("gaufre_empoisonnee");
-                gaufre_droit = lisImage("gaufre_droit");
-                gaufre_bas = lisImage("gaufre_bas");
-                gaufre_coin = lisImage("gaufre_coin");
-                poison_bas = lisImage("gaufre_empoisonnee_bas");
-                poison_droit = lisImage("gaufre_empoisonnee_droit");
+                gaufre = lisImage("pixel/gaufre");
+                poison = lisImage("pixel/gaufre_empoisonnee");
+                gaufre_droit = lisImage("pixel/gaufre_droit");
+                gaufre_bas = lisImage("pixel/gaufre_bas");
+                gaufre_coin = lisImage("pixel/gaufre_coin");
+                poison_bas = lisImage("pixel/gaufre_empoisonnee_bas");
+                poison_droit = lisImage("pixel/gaufre_empoisonnee_droit");
                 break;
         }
     }
