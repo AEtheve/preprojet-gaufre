@@ -77,7 +77,7 @@ public class InterfaceGraphique implements Runnable, InterfaceUtilisateur {
 
     public void run() {
 		frame = new JFrame("Gaufre Empoisonnée");
-		PlateauGraphique plateauGraphique = new PlateauGraphique(j);
+		PlateauGraphique plateauGraphique = new PlateauGraphique(j,"pixel");
 		plateauGraphique.addMouseListener(new AdaptateurSouris(plateauGraphique, control));
 		ajouteBarreDesMenus(frame);
 		frame.add(plateauGraphique);

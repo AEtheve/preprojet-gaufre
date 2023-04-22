@@ -9,8 +9,8 @@ import Modele.Jeu;
 
 public class BarreDesMenus extends JMenuBar{
 
-    JMenu menu, smenu;
-    JMenuItem e1, e2, e3, e4, e5, e6;
+    JMenu menu, menu2, smenu;
+    JMenuItem e1, e2, e3, e4, e5, e6,s1,s2;
     Jeu j;
 
     AbstractAction Quitter = new AbstractAction("Quitter") {
@@ -31,6 +31,28 @@ public class BarreDesMenus extends JMenuBar{
 
         }
     };
+
+    AbstractAction Classique = new AbstractAction("Classique") {
+        // Action réalisée lors du clic sur l'item Classique du menu déroulant
+        public void actionPerformed(ActionEvent e) {
+            // Reset du plateau
+            j.getPlateau().setStyle("Classique");
+            j.metAJour();
+
+        }
+    };
+
+    AbstractAction Pixel = new AbstractAction("Pixel") {
+        // Action réalisée lors du clic sur l'item Classique du menu déroulant
+        public void actionPerformed(ActionEvent e) {
+            // Reset du plateau
+            j.getPlateau().setStyle("Pixel");
+            j.metAJour();
+
+        }
+    };
+
+
     
     public BarreDesMenus(Jeu j){
         this.j=j;
@@ -55,6 +77,15 @@ public class BarreDesMenus extends JMenuBar{
         // Ajouter le sous menu dans le menu déroulant principal
         menu.add(smenu);
         this.add(menu);
+        // Menu du style de plateau
+        menu2 = new JMenu("Style de plateau");
+        s1 = new JMenuItem();
+        s1.setAction(Classique);
+        s2 = new JMenuItem();
+        s2.setAction(Pixel);
+        menu2.add(s1);
+        menu2.add(s2);
+        this.add(menu2);
     }
 
 

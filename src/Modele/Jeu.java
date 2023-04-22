@@ -6,7 +6,7 @@ public class Jeu extends Observable {
     Plateau plateau;
 
     public Jeu(int width, int height) {
-        plateau = new Plateau(width, height);
+        plateau = new Plateau(width, height,"pixel");
     }
 
     public Plateau getPlateau() {
@@ -14,7 +14,7 @@ public class Jeu extends Observable {
     }
 
     public void resetPlateau(){
-        plateau = new Plateau(plateau.getWidth(), plateau.getHeight());
+        plateau = new Plateau(plateau.getWidth(), plateau.getHeight(),plateau.getStyle());
     }
 
     public void efface(int x, int y) {

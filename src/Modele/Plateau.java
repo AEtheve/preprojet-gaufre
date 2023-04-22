@@ -10,8 +10,10 @@ public class Plateau {
 
     int player = 0;
     int counter;
+    String style;
+    boolean styleChanged;
 
-    public Plateau(int n, int m) {
+    public Plateau(int n, int m,String style) {
         matrice = new int[n][m];
 
         for (int i = 0; i < n; i++) {
@@ -20,11 +22,17 @@ public class Plateau {
             }
         }
         setPoison(0, 0);
+        this.style=style;
         counter = 0;
     }
 
     public int getWidth(){
         return matrice.length;
+    }
+
+    public void setStyle(String style){
+        this.style=style;
+        this.styleChanged=true;
     }
 
     public int getHeight(){
@@ -82,5 +90,17 @@ public class Plateau {
 
     public void setCounter(int counter) {
         this.counter = counter;
+    }
+
+    public boolean styleChanged(){
+        return styleChanged;
+    }
+
+    public void resetStyleChanged(){
+        styleChanged=false;
+    }
+
+    public String getStyle(){
+        return style;
     }
 }

@@ -18,17 +18,13 @@ public class PlateauGraphique extends JComponent implements Observateur {
     int yFen;
     int barreHauteur;
     int barreLargeur;
+    String style;
 
-    public PlateauGraphique(Jeu j) {
+    public PlateauGraphique(Jeu j,String style) {
         this.j = j;
         j.ajouteObservateur(this);
-        gaufre = lisImage("gaufre");
-        poison = lisImage("gaufre_empoisonnee");
-        gaufre_droit = lisImage("gaufre_droit");
-        gaufre_bas = lisImage("gaufre_bas");
-        gaufre_coin = lisImage("gaufre_coin");
-        poison_bas = lisImage("gaufre_empoisonnee_bas");
-        poison_droit = lisImage("gaufre_empoisonnee_droit");
+        this.style = style.toLowerCase();
+        setStyle(style);
     }
 
     private Image lisImage(String nom) {
@@ -42,6 +38,32 @@ public class PlateauGraphique extends JComponent implements Observateur {
         return null;
     }
 
+    public void setStyle(String style){
+        switch(style.toLowerCase()){
+            case "classique":
+                System.out.println("Style classique");
+                gaufre = lisImage("gaufre2");
+                poison = lisImage("poison2");
+                gaufre_droit = lisImage("gaufre2");
+                gaufre_bas = lisImage("gaufre2");
+                gaufre_coin = lisImage("gaufre2");
+                poison_bas = lisImage("poison2");
+                poison_droit = lisImage("poison2");
+                break;
+            case "pixel":
+            default :
+                style = "pixel";
+                gaufre = lisImage("gaufre");
+                poison = lisImage("gaufre_empoisonnee");
+                gaufre_droit = lisImage("gaufre_droit");
+                gaufre_bas = lisImage("gaufre_bas");
+                gaufre_coin = lisImage("gaufre_coin");
+                poison_bas = lisImage("gaufre_empoisonnee_bas");
+                poison_droit = lisImage("gaufre_empoisonnee_droit");
+                break;
+        }
+    }
+
     private void tracer(Graphics2D g, Image i, int x, int y, int l, int h) {
         g.drawImage(i, x, y, l, h, null);
     }
@@ -53,6 +75,10 @@ public class PlateauGraphique extends JComponent implements Observateur {
     public void paintComponent(Graphics g) {
         Graphics2D drawable = (Graphics2D) g;
         Plateau p = j.getPlateau();
+        if (p.styleChanged()){
+            setStyle(p.getStyle());
+            p.resetStyleChanged();
+        }
 
         barreHauteur = getSize().height * 5 / 100;
         barreLargeur = getSize().width;
@@ -131,5 +157,6 @@ public class PlateauGraphique extends JComponent implements Observateur {
     public int getyFen() {
         return yFen;
     }
+
 
 }
