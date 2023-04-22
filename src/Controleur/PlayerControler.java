@@ -14,11 +14,26 @@ public class PlayerControler implements CollecteurEvenements {
 
     @Override
     public void onClick(int x, int y) {
-        if (x < 0 || x >= j.getPlateau().getWidth() || y < 0 || y >= j.getPlateau().getHeight()) {
+        if (x < 0 || x >= j.getPlateau().getWidth() || y < 0 || 
+                y >= j.getPlateau().getHeight() || j.getPlateau().estMange(x, y)) {
             return;
         }
-        
-        j.efface(x, y);
+        j.upCounter();
+        j.changePlayer();
+
+        if(!testFin(x, y))
+            j.efface(x, y);
+    }
+
+    boolean testFin(int x, int y) {
+        if (j.getPlateau().estPoison(x, y)) {
+            System.out.println("Le jeu est terminé");
+            System.out.println("Le joueur " + (j.getPlayer()+1) + " a gagné ! (" + j.getCounter() + " coups joués lors de cette partie)");  // +1 coup car le coup perdant n'est pas ajouté avant
+            // Reset du plateau pour relancer une nouvelle partie          
+            j.setFin();
+            return true;
+        }
+        return false;
     }
 
     public void ajouteInterfaceUtilisateur(InterfaceUtilisateur v) {
