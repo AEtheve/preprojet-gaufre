@@ -9,6 +9,7 @@ public class Plateau {
     int [][] matrice;
 
     int player = 0;
+    int counter;
 
     public Plateau(int n, int m) {
         matrice = new int[n][m];
@@ -19,6 +20,7 @@ public class Plateau {
             }
         }
         setPoison(0, 0);
+        counter = 0;
     }
 
     public int getWidth(){
@@ -72,5 +74,13 @@ public class Plateau {
 
     public void setPlayer(int player) {
         this.player = player;
+    }
+
+    public int getCounter() {
+        return counter;
+    }
+
+    public void setCounter(int counter) {
+        this.counter = counter;
     }
 }

@@ -79,7 +79,7 @@ public class PlateauGraphique extends JComponent implements Observateur {
         drawable.setColor(Color.GRAY);
         drawable.fillRect(barreX, barreY, barreLargeur, barreHauteur);
 
-        String title = "Tour du joueur " + (j.getPlateau().getPlayer() + 1);
+        String title = "Tour du joueur " + (j.getPlateau().getPlayer() + 1) + " - Coup N°" + (j.getPlateau().getCounter()+1);
         Font font = new Font("Arial", Font.BOLD, (barreHauteur * 6 / 10));
         drawable.setFont(font);
         drawable.setColor(Color.WHITE);

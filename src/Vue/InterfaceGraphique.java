@@ -68,6 +68,11 @@ public class InterfaceGraphique implements Runnable, InterfaceUtilisateur {
 		frame.setJMenuBar(barreDesMenus);
 	}
 
+	public void infoBox(String infoMessage, String titleBar) {
+		// Affiche une box d'information avec le message + titre passés en argument 
+		JOptionPane.showMessageDialog(frame, infoMessage, titleBar, JOptionPane.INFORMATION_MESSAGE);
+	}
+
 
 
     public void run() {
