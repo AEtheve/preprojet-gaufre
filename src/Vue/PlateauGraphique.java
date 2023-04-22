@@ -44,11 +44,11 @@ public class PlateauGraphique extends JComponent implements Observateur {
                 System.out.println("Style classique");
                 gaufre = lisImage("classique/gaufre");
                 poison = lisImage("classique/poison");
-                gaufre_droit = lisImage("classique/gaufre");
-                gaufre_bas = lisImage("classique/gaufre");
-                gaufre_coin = lisImage("classique/gaufre");
-                poison_bas = lisImage("classique/poison");
-                poison_droit = lisImage("classique/poison");
+                gaufre_droit = lisImage("classique/gaufre_droit");
+                gaufre_bas = lisImage("classique/gaufre_bas");
+                gaufre_coin = lisImage("classique/gaufre_coin");
+                poison_bas = lisImage("classique/poison_bas");
+                poison_droit = lisImage("classique/poison_droit");
                 break;
             case "pixel":
             default :
