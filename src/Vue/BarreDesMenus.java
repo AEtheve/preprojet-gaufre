@@ -74,6 +74,29 @@ public class BarreDesMenus extends JMenuBar{
         smenu.add(e3); 
         smenu.add(e4);
         smenu.add(e5);
+
+        // Ajouter les actions aux éléments du sous menu déroulant:
+        e3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                j.setNiveauIA(Jeu.IA_FAIBLE);
+                System.out.println("Niveau de l'IA: Faible");
+            }
+        });
+
+        e4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                j.setNiveauIA(Jeu.IA_MOYEN);
+                System.out.println("Niveau de l'IA: Moyen");
+            }
+        });
+
+        e5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                j.setNiveauIA(Jeu.IA_ELEVE);
+                System.out.println("Niveau de l'IA: Elevé");
+            }
+        });
+        
         // Ajouter le sous menu dans le menu déroulant principal
         menu.add(smenu);
         this.add(menu);

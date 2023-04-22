@@ -4,6 +4,11 @@ import Patterns.Observable;
 
 public class Jeu extends Observable {
     Plateau plateau;
+    int niveauIA;
+
+    public static final int IA_FAIBLE = 1;
+    public static final int IA_MOYEN = 2;
+    public static final int IA_ELEVE = 3;
 
     public Jeu(int width, int height) {
         plateau = new Plateau(width, height,"pixel");
@@ -34,6 +39,15 @@ public class Jeu extends Observable {
         plateau.setPlayer(plateau.getPlayer() == 0 ? 1 : 0);
         plateau.setCounter(plateau.getCounter() + 1);
         metAJour();
+    }
+
+
+    public void setNiveauIA(int niveauIA) {
+        this.niveauIA = niveauIA;
+    }
+
+    public int getNiveauIA() {
+        return niveauIA;
     }
 
     boolean termine(int x, int y) {
