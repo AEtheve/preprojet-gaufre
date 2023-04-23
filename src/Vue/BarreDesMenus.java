@@ -10,7 +10,7 @@ import Modele.Jeu;
 public class BarreDesMenus extends JMenuBar{
 
     JMenu menu, menu2, smenu, coups;
-    JMenuItem e1, e2, e3, e4, e5, e6,s1,s2, annule, refais;
+    JMenuItem e1, e2, e3, e4, e5, e6,s1,s2, annule, refait;
     Jeu j;
 
     AbstractAction Quitter = new AbstractAction("Quitter") {
@@ -61,6 +61,14 @@ public class BarreDesMenus extends JMenuBar{
         }
     };
 
+    AbstractAction Refait = new AbstractAction("Refaire le dernier coup") {
+        // Action réalisée lors du clic sur l'item Classique du menu déroulant
+        public void actionPerformed(ActionEvent e) {
+            // Reset du plateau
+            j.refait();
+            j.metAJour();
+        }
+    };
 
     
     public BarreDesMenus(Jeu j){
@@ -121,10 +129,12 @@ public class BarreDesMenus extends JMenuBar{
         coups = new JMenu("Coups");
         annule = new JMenuItem();
         annule.setAction(Annule);
-        refais = new JMenuItem("Refais"); // A réaliser plus tard
+        refait = new JMenuItem();
+        refait.setAction(Refait);
         coups.add(annule);
-        coups.add(refais);
+        coups.add(refait);
         this.add(coups);
+        
     }
 
 

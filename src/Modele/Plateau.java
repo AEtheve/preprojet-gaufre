@@ -15,8 +15,8 @@ public class Plateau {
     String style;
     boolean styleChanged;
 
-    ArrayList<int [][]> histo; // Historique des coups
-    int pos; // Position dans l'historique des coups
+    ArrayList<int [][]> histo_passe; // Historique des coups joués
+    ArrayList<int [][]> histo_futur; // Historique des coups annulés
 
     public Plateau(int n, int m,String style) {
         matrice = new int[n][m];
@@ -28,22 +28,13 @@ public class Plateau {
         }
         setPoison(0, 0);
         this.style=style;
-        histo = new ArrayList<int [][]>();
+        // histo = new ArrayList<int [][]>();
+        histo_passe = new ArrayList<int [][]>();
+        histo_futur = new ArrayList<int [][]>();
         // histo.add(mcopy(matrice)); // Ajout de la config complète de base du plateau - plateau vierge
         counter = 0;
     }
-
-    private int[][] mcopy(int [][] mat_src){
-        // Renvoie une copie de matrice - Utilisable pour ajouter une config de plateau à l'historique de jeu
-        int [][] mat_dest = new int [mat_src.length] [mat_src.length];
-        for (int i=0; i<mat_src.length;i++){
-            for (int j=0;j<mat_src.length;j++){
-                mat_dest[i][j]=mat_src[i][j];
-            }
-        }
-        return mat_dest;
-    }
-
+    
     public int getWidth(){
         return matrice.length;
     }
@@ -122,15 +113,15 @@ public class Plateau {
         return style;
     }
 
-    public void addHisto(){
-        try{
-            // Remplace la case si déjà créée dans l'histo
-            histo.add(pos,mcopy(matrice));
-            pos++;
-            return;
-        } catch (Exception e){}
-        histo.add(mcopy(matrice));
-        pos++;
+    private int[][] mcopy(int [][] mat_src){
+        // Renvoie une copie de matrice - Utilisable pour ajouter une config de plateau à l'historique de jeu
+        int [][] mat_dest = new int [mat_src.length] [mat_src.length];
+        for (int i=0; i<mat_src.length;i++){
+            for (int j=0;j<mat_src.length;j++){
+                mat_dest[i][j]=mat_src[i][j];
+            }
+        }
+        return mat_dest;
     }
 
     private void afficheMat(int [][] mat){
@@ -144,13 +135,30 @@ public class Plateau {
     }
 
     public boolean peutAnnuler(){
-        return pos > 0 ? true : false;
+        return histo_passe.size() > 0;
     }
 
     public void annule(){
-        matrice = mcopy(histo.get(pos-1));
-        pos--;
-        counter--;
-        setPlayer(getPlayer()==0 ? 1 : 0);
+        histo_futur.add(mcopy(matrice));
+        matrice = histo_passe.get(histo_passe.size()-1);
+        
+        histo_passe.remove(histo_passe.size()-1);
+    }
+
+    public boolean peutRefaire(){
+        return histo_futur.size() > 0;
+    }
+
+    public void refait(){
+        histo_passe.add(mcopy(matrice));
+        matrice = histo_futur.get(histo_futur.size()-1);
+        histo_futur.remove(histo_futur.size()-1);
+        
+    }
+
+
+    public void addHisto(){
+        histo_passe.add(mcopy(matrice));
+        histo_futur.clear();
     }
 }

@@ -62,5 +62,11 @@ public class Jeu extends Observable {
             plateau.annule();
         }
     }
+
+    public void refait(){
+        if (plateau.peutRefaire()){
+            plateau.refait();
+        }
+    }
     
 }
