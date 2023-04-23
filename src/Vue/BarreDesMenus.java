@@ -9,8 +9,8 @@ import Modele.Jeu;
 
 public class BarreDesMenus extends JMenuBar{
 
-    JMenu menu, menu2, smenu;
-    JMenuItem e1, e2, e3, e4, e5, e6,s1,s2;
+    JMenu menu, menu2, smenu, coups;
+    JMenuItem e1, e2, e3, e4, e5, e6,s1,s2, annule, refais;
     Jeu j;
 
     AbstractAction Quitter = new AbstractAction("Quitter") {
@@ -49,6 +49,15 @@ public class BarreDesMenus extends JMenuBar{
             j.getPlateau().setStyle("Pixel");
             j.metAJour();
 
+        }
+    };
+
+    AbstractAction Annule = new AbstractAction("Annuler le dernier coup") {
+        // Action réalisée lors du clic sur l'item Classique du menu déroulant
+        public void actionPerformed(ActionEvent e) {
+            // Reset du plateau
+            j.annule();
+            j.metAJour();
         }
     };
 
@@ -109,6 +118,13 @@ public class BarreDesMenus extends JMenuBar{
         menu2.add(s1);
         menu2.add(s2);
         this.add(menu2);
+        coups = new JMenu("Coups");
+        annule = new JMenuItem();
+        annule.setAction(Annule);
+        refais = new JMenuItem("Refais"); // A réaliser plus tard
+        coups.add(annule);
+        coups.add(refais);
+        this.add(coups);
     }
 
 

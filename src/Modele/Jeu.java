@@ -23,6 +23,7 @@ public class Jeu extends Observable {
     }
 
     public void efface(int x, int y) {
+        plateau.addHisto();
         plateau.efface(x, y);
         metAJour();
     }
@@ -54,6 +55,12 @@ public class Jeu extends Observable {
 
     public int getNiveauIA() {
         return niveauIA;
+    }
+
+    public void annule(){
+        if (plateau.peutAnnuler()){
+            plateau.annule();
+        }
     }
     
 }
