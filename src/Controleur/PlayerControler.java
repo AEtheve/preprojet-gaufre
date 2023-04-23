@@ -25,6 +25,18 @@ public class PlayerControler implements CollecteurEvenements {
             j.efface(x, y);
     }
 
+    @Override
+    public void onKeyPress(int keyCode) {
+        if (keyCode == 37) {
+            j.annule();
+            j.metAJour();
+        } 
+        else if (keyCode == 39) {
+            j.refait();
+            j.metAJour();
+        }
+    }
+
     boolean testFin(int x, int y) {
         if (j.getPlateau().estPoison(x, y)) {
             System.out.println("Le jeu est terminé");
