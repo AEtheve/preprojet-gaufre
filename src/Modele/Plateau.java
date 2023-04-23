@@ -144,10 +144,6 @@ public class Plateau {
     }
 
     public boolean peutAnnuler(){
-        System.out.println("POS : "+pos);
-        for (int i=0; i<histo.size();i++){
-            afficheMat(histo.get(i));
-        }
         return pos > 0 ? true : false;
     }
 
