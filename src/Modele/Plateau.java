@@ -143,6 +143,7 @@ public class Plateau {
         matrice = histo_passe.get(histo_passe.size()-1);
         
         histo_passe.remove(histo_passe.size()-1);
+        setPlayer(getPlayer()==0 ? 1 : 0);
     }
 
     public boolean peutRefaire(){
@@ -153,7 +154,7 @@ public class Plateau {
         histo_passe.add(mcopy(matrice));
         matrice = histo_futur.get(histo_futur.size()-1);
         histo_futur.remove(histo_futur.size()-1);
-        
+        setPlayer(getPlayer()==0 ? 1 : 0);
     }
 
 
