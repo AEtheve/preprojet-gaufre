@@ -27,7 +27,7 @@ public class PlayerControler implements CollecteurEvenements {
             j.efface(x, y);
 
         if (j.getNiveauIA()!=Jeu.IA_AUCUNE) {
-            System.out.println("IA JOUE");
+            // System.out.println("IA JOUE");
             j.ia.aJoue(new Coords(x, y));
 
             Coords play_ia = j.ia.Jouer();

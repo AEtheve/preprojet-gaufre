@@ -23,6 +23,9 @@ public class ArbreEtOu {
         // Remplissage des suivants
         for (int i=0; i<config.length; i++) {
             for (int j=0; j<config[i]; j++) {
+                if (i==0 && j==0) {
+                    continue;
+                }
                 // Creation fils
                 ArbreEtOu fils = new ArbreEtOu(true);
                 //Calcul nouvelle config
@@ -52,6 +55,9 @@ public class ArbreEtOu {
         // Remplissage des suivants
         for (int i=0; i<config.length; i++) {
             for (int j=0; j<config[i]; j++) {
+                if (i==0 && j==0) {
+                    continue;
+                }
                 // Creation fils
                 ArbreEtOu fils = new ArbreEtOu(false);
                 //Calcul nouvelle config

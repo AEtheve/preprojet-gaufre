@@ -165,12 +165,13 @@ public class Plateau {
     }
 
     public int[] getConfig(){
-        int[] config = new int[matrice.length*matrice[0].length];
-        int k = 0;
+        int[] config = new int[matrice[0].length];
         for (int i = 0; i < matrice.length; i++) {
+            config[i] = 0;
             for (int j = 0; j < matrice[0].length; j++) {
-                config[k] = matrice[i][j];
-                k++;
+                if (!estMange(i, j)) {
+                    config[i]++;
+                } 
             }
         }
         return config;
