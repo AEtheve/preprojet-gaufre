@@ -39,8 +39,8 @@ public class PlayerControler implements CollecteurEvenements {
 
     boolean testFin(int x, int y) {
         if (j.getPlateau().estPoison(x, y)) {
-            System.out.println("Le jeu est terminé");
-            System.out.println("Le joueur " + (j.getPlayer()+1) + " a gagné ! (" + j.getCounter() + " coups joués lors de cette partie)");  // +1 coup car le coup perdant n'est pas ajouté avant
+                System.out.println("Le jeu est terminé");
+                System.out.println("Le joueur " + (j.getPlayer()+1) + " a gagné ! (" + j.getCounter() + " coups joués lors de cette partie)");  // +1 coup car le coup perdant n'est pas ajouté avant
             // Reset du plateau pour relancer une nouvelle partie          
             j.setFin();
             return true;

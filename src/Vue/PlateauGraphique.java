@@ -72,6 +72,14 @@ public class PlateauGraphique extends JComponent implements Observateur {
         repaint();
     }
 
+    public void afficherFinPartie(){
+        // JOptionPane.showMessageDialog(this, "message");
+        // action ok:
+        JOptionPane.showMessageDialog(this, "Le joueur " + (j.getPlayer()+1) + " a gagné ! (" + j.getCounter() + " coups joués lors de cette partie)", "Fin de partie", JOptionPane.INFORMATION_MESSAGE);
+        j.setVarFin(false);
+        miseAJour();
+    }
+
     public void paintComponent(Graphics g) {
         Graphics2D drawable = (Graphics2D) g;
         Plateau p = j.getPlateau();
@@ -95,6 +103,10 @@ public class PlateauGraphique extends JComponent implements Observateur {
 
         dessinerBarre(drawable, p);
         dessinerCases(drawable, p);
+
+        if (j.getVarFin()){
+            afficherFinPartie();
+        }
 
     }
 

@@ -5,6 +5,7 @@ import Patterns.Observable;
 public class Jeu extends Observable {
     Plateau plateau;
     int niveauIA;
+    boolean fin = false;
 
     public static final int IA_FAIBLE = 1;
     public static final int IA_MOYEN = 2;
@@ -46,7 +47,16 @@ public class Jeu extends Observable {
 
     public void setFin(){
         resetPlateau();
+        fin = true;
         metAJour();
+    }
+
+    public void setVarFin(boolean b){
+        fin = b;
+    }
+
+    public boolean getVarFin(){
+        return fin;
     }
 
     public void setNiveauIA(int niveauIA) {
@@ -68,5 +78,6 @@ public class Jeu extends Observable {
             plateau.refait();
         }
     }
+    
     
 }

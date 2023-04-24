@@ -80,6 +80,7 @@ public class InterfaceGraphique implements Runnable, InterfaceUtilisateur {
 		PlateauGraphique plateauGraphique = new PlateauGraphique(j,"pixel");
 		plateauGraphique.addMouseListener(new AdaptateurSouris(plateauGraphique, control));
 		frame.addKeyListener(new AdaptateurClavier(plateauGraphique, control));
+		
 		ajouteBarreDesMenus(frame);
 		frame.add(plateauGraphique);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
