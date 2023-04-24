@@ -107,7 +107,7 @@ public class InterfaceGraphique implements Runnable, InterfaceUtilisateur {
 		modePanel.add(Box.createRigidArea(new Dimension(0, 20)));
 
 		modeFrame.add(modePanel);
-		modeFrame.setSize(300, 200);
+		modeFrame.setSize(400, 200);
 
 		modeFrame.setVisible(true);
 
