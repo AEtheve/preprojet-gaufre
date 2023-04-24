@@ -6,6 +6,7 @@ import java.io.InputStream;
 
 public class Configuration {
     static final int silence = 1;
+	public static final String IA="Faible";
 
     public static InputStream ouvre(String s) {
 		InputStream in = null;

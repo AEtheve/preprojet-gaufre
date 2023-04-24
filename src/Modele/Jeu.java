@@ -4,8 +4,9 @@ import Patterns.Observable;
 
 public class Jeu extends Observable {
     Plateau plateau;
-    int niveauIA;
+    int niveauIA=0;
     boolean fin = false;
+    public IA ia = null;
 
     public static final int IA_AUCUNE = 0;
     public static final int IA_FAIBLE = 1;
@@ -61,6 +62,9 @@ public class Jeu extends Observable {
     }
 
     public void setNiveauIA(int niveauIA) {
+        if(niveauIA!=Jeu.IA_AUCUNE) {
+            this.ia = IA.nouvelle(this);
+        }
         this.niveauIA = niveauIA;
     }
 

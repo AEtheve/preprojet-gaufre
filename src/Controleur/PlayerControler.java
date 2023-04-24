@@ -3,6 +3,7 @@ package Controleur;
 import Vue.CollecteurEvenements;
 import Vue.InterfaceUtilisateur;
 import Modele.Jeu;
+import Structures.Coords;
 
 public class PlayerControler implements CollecteurEvenements {
     Jeu j;
@@ -18,11 +19,23 @@ public class PlayerControler implements CollecteurEvenements {
                 y >= j.getPlateau().getHeight() || j.getPlateau().estMange(x, y)) {
             return;
         }
+
         j.upCounter();
         j.changePlayer();
 
         if(!testFin(x, y))
             j.efface(x, y);
+
+        if (j.getNiveauIA()!=Jeu.IA_AUCUNE) {
+            System.out.println("IA JOUE");
+            j.ia.aJoue(new Coords(x, y));
+
+            Coords play_ia = j.ia.Jouer();
+
+            j.efface(play_ia.x, play_ia.y);
+            j.changePlayer();
+            j.upCounter();
+        }
     }
 
     @Override

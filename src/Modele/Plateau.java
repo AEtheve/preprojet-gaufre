@@ -163,4 +163,17 @@ public class Plateau {
         histo_passe.add(mcopy(matrice));
         histo_futur.clear();
     }
+
+    public int[] getConfig(){
+        int[] config = new int[matrice.length*matrice[0].length];
+        int k = 0;
+        for (int i = 0; i < matrice.length; i++) {
+            for (int j = 0; j < matrice[0].length; j++) {
+                config[k] = matrice[i][j];
+                k++;
+            }
+        }
+        return config;
+    }
+
 }

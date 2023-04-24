@@ -10,7 +10,7 @@ public class Gaufre {
 
     public static void main(String[] args) {
         Configuration.info("Initialisation de la fenetre");
-        Jeu j = new Jeu(10, 10);
+        Jeu j = new Jeu(4, 4);
 
 
         CollecteurEvenements pc = new PlayerControler(j);
