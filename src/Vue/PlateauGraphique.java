@@ -73,11 +73,9 @@ public class PlateauGraphique extends JComponent implements Observateur {
     }
 
     public void afficherFinPartie(){
-        // JOptionPane.showMessageDialog(this, "message");
-        // action ok:
-        JOptionPane.showMessageDialog(this, "Le joueur " + (j.getPlayer()+1) + " a gagné ! (" + j.getCounter() + " coups joués lors de cette partie)", "Fin de partie", JOptionPane.INFORMATION_MESSAGE);
-        j.setVarFin(false);
-        miseAJour();
+        // JOptionPane.showMessageDialog(this, "Le joueur " + (j.getPlayer()+1) + " a gagné ! (" + j.getCounter() + " coups joués lors de cette partie)", "Fin de partie", JOptionPane.INFORMATION_MESSAGE);
+        // j.setVarFin(false);
+        // miseAJour();
     }
 
     public void paintComponent(Graphics g) {
