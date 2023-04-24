@@ -5,27 +5,26 @@ import Modele.Jeu;
 import javax.swing.*;
 import java.awt.*;
 
-
 public class InterfaceGraphique implements Runnable, InterfaceUtilisateur {
-    Jeu j;
+	Jeu j;
 	CollecteurEvenements control;
-    JFrame frame;
+	JFrame frame;
 	boolean maximized;
 	JLabel joueur;
 
-    public InterfaceGraphique(Jeu j, CollecteurEvenements c) {
-        this.j = j;
+	public InterfaceGraphique(Jeu j, CollecteurEvenements c) {
+		this.j = j;
 		control = c;
-    }
+	}
 
-    public static void demarrer(Jeu j, CollecteurEvenements c) {
+	public static void demarrer(Jeu j, CollecteurEvenements c) {
 		InterfaceGraphique vue = new InterfaceGraphique(j, c);
 		c.ajouteInterfaceUtilisateur(vue);
 		SwingUtilities.invokeLater(vue);
 
 	}
 
-    public void toggleFullscreen() {
+	public void toggleFullscreen() {
 		GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
 		GraphicsDevice device = env.getDefaultScreenDevice();
 		if (maximized) {
@@ -69,18 +68,57 @@ public class InterfaceGraphique implements Runnable, InterfaceUtilisateur {
 	}
 
 	public void infoBox(String infoMessage, String titleBar) {
-		// Affiche une box d'information avec le message + titre passés en argument 
+		// Affiche une box d'information avec le message + titre passés en argument
 		JOptionPane.showMessageDialog(frame, infoMessage, titleBar, JOptionPane.INFORMATION_MESSAGE);
 	}
 
+	public void run() {
+		choisirModeDeJeu(); // appel de la méthode pour choisir le mode de jeu
+	}
 
+	public void choisirModeDeJeu() {
+		// création d'une nouvelle fenêtre pour choisir le mode de jeu
+		JFrame modeFrame = new JFrame("Choix du mode de jeu");
+		JPanel modePanel = new JPanel();
+		JButton vsBotButton = new JButton("Jouer contre l'ordinateur");
+		JButton vsPlayerButton = new JButton("Jouer contre un autre joueur");
 
-    public void run() {
+		modePanel.setLayout(new BoxLayout(modePanel, BoxLayout.Y_AXIS));
+
+		vsBotButton.addActionListener(e -> {
+			j.setNiveauIA(Jeu.IA_FAIBLE);
+			modeFrame.dispose();
+			runGame();
+		});
+
+		vsPlayerButton.addActionListener(e -> {
+			j.setNiveauIA(Jeu.IA_AUCUNE);
+			modeFrame.dispose();
+			runGame();
+		});
+
+		modePanel.add(creerLabel("Choisissez le mode de jeu :"));
+		modePanel.add(Box.createRigidArea(new Dimension(0, 20)));
+
+		modePanel.add(vsBotButton);
+		modePanel.add(Box.createRigidArea(new Dimension(0, 20)));
+
+		modePanel.add(vsPlayerButton);
+		modePanel.add(Box.createRigidArea(new Dimension(0, 20)));
+
+		modeFrame.add(modePanel);
+		modeFrame.setSize(300, 200);
+
+		modeFrame.setVisible(true);
+
+	}
+
+	void runGame() {
 		frame = new JFrame("Gaufre Empoisonnée");
-		PlateauGraphique plateauGraphique = new PlateauGraphique(j,"pixel");
+		PlateauGraphique plateauGraphique = new PlateauGraphique(j, "pixel");
 		plateauGraphique.addMouseListener(new AdaptateurSouris(plateauGraphique, control));
 		frame.addKeyListener(new AdaptateurClavier(plateauGraphique, control));
-		
+
 		ajouteBarreDesMenus(frame);
 		frame.add(plateauGraphique);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -88,7 +126,5 @@ public class InterfaceGraphique implements Runnable, InterfaceUtilisateur {
 		frame.setExtendedState(Frame.MAXIMIZED_BOTH);
 		frame.setVisible(true);
 	}
-
-
 
 }

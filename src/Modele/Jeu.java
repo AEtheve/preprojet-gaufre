@@ -7,6 +7,7 @@ public class Jeu extends Observable {
     int niveauIA;
     boolean fin = false;
 
+    public static final int IA_AUCUNE = 0;
     public static final int IA_FAIBLE = 1;
     public static final int IA_MOYEN = 2;
     public static final int IA_ELEVE = 3;
